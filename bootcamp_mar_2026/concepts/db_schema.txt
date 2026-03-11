@@ -1,0 +1,76 @@
+ USERS {
+        UUID id PK
+        STRING email UK
+        STRING hashed_password
+        BOOLEAN is_active
+        BOOLEAN is_superuser
+        BOOLEAN is_verified
+        STRING name
+        STRING phone
+        STRING state
+        STRING district
+        ENUM role
+        DATETIME created_at
+    }
+
+    FARMS {
+        UUID id PK
+        UUID farmer_id FK
+        STRING name
+        STRING crop_type
+        FLOAT area_hectares
+        STRING soil_type
+        STRING location
+    }
+
+    UPLOADS {
+        UUID id PK
+        UUID farmer_id FK
+        UUID farm_id FK
+        STRING image_path
+        STRING disease_detected
+        FLOAT confidence
+        STRING crop
+        DATETIME uploaded_at
+    }
+
+    ADVISORIES {
+        UUID id PK
+        UUID upload_id FK UK
+        TEXT treatment
+        TEXT organic_alternative
+        TEXT prevention
+        TEXT fertilizer
+        DATETIME created_at
+    }
+
+    IRRIGATION_LOGS {
+        UUID id PK
+        UUID farm_id FK
+        STRING crop
+        FLOAT soil_moisture
+        FLOAT temperature
+        FLOAT water_qty_liters_per_hectare
+        STRING frequency
+        DATETIME recommended_at
+    }
+
+    MARKET_PRICES {
+        UUID id PK
+        STRING crop
+        STRING state
+        STRING mandi
+        FLOAT price_per_quintal
+        DATE price_date
+    }
+
+    NOTIFICATIONS {
+        UUID id PK
+        UUID farmer_id FK
+        STRING type
+        STRING channel
+        TEXT message
+        STRING status
+        DATETIME sent_at
+        DATETIME created_at
+    }
