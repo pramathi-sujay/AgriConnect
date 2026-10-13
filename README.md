@@ -9,14 +9,8 @@ market-price information through a unified API.
 
 The platform combines computer vision, retrieval-augmented generation
 (RAG), rule-based decision logic, event-driven communication, and shared
-infrastructure to demonstrate how an agriculture-focused digital service
-can be organized as a modular backend system.
-
-> **Project status and disclaimer:** This is an educational project and
-> intentionally contains bugs for learning purposes. Predictions and
-> recommendations are not a substitute for advice from qualified
-> agricultural experts. Validate outputs before making crop-treatment,
-> irrigation, or financial decisions.
+infrastructure to deliver agriculture-focused capabilities through a
+modular backend system.
 
 ------------------------------------------------------------------------
 
@@ -40,7 +34,6 @@ can be organized as a modular backend system.
 -   [Testing and Troubleshooting](#testing-and-troubleshooting)
 -   [Known Limitations](#known-limitations)
 -   [Potential Future Enhancements](#potential-future-enhancements)
--   [Eight-Day Build Plan](#eight-day-build-plan)
 
 ------------------------------------------------------------------------
 
@@ -79,7 +72,7 @@ streaming, and vector search.
 
 ## Goals
 
-AgriConnect demonstrates how to:
+AgriConnect is designed to:
 
 -   Organize an agriculture application using a microservices
     architecture.
@@ -442,7 +435,7 @@ The following structure is based on the supplied README. Individual
 service folders may contain additional modules.
 
 ``` text
-AgentChiguruV2/
+AgriConnect/
 ├── docker-compose_v2.yml       # Full-stack Docker Compose configuration
 ├── .env.example                # Environment-variable template
 ├── nginx/
@@ -463,11 +456,6 @@ AgentChiguruV2/
 ├── notification/                # Notification service (port 8005)
 └── ai_ml_models/               # MobileNetV2 disease model assets
 ```
-
-> **Repository naming:** The provided tree uses `AgentChiguruV2/` as its
-> root directory. The product/platform name in this documentation is
-> **AgriConnect**. Rename the tree's root label if the repository
-> directory has since been renamed.
 
 ------------------------------------------------------------------------
 
@@ -582,9 +570,8 @@ explicitly identifies the following advisory-provider options:
   -----------------------------------------------------------------------
   Setting                             Purpose
   ----------------------------------- -----------------------------------
-  `LLM_PROVIDER=mock`                 Uses the mock provider for
-                                      workshop/testing mode without
-                                      requiring an external LLM API key.
+  `LLM_PROVIDER=mock`                 Uses the mock provider for local testing without requiring an
+                                      external LLM API key.
 
   `LLM_PROVIDER=openai`               Selects the OpenAI provider;
                                       requires `OPENAI_API_KEY`.
@@ -598,7 +585,7 @@ explicitly identifies the following advisory-provider options:
                                       Do not expose or commit this value.
   -----------------------------------------------------------------------
 
-Example setting for local workshop mode:
+Example setting for local testing:
 
 ``` dotenv
 LLM_PROVIDER=mock
@@ -872,10 +859,9 @@ Use the service names defined in the Compose file.
                                       are enabled.
   -----------------------------------------------------------------------
 
-### Educational debugging note
+### Validation note
 
-This repository intentionally contains bugs for learning purposes. A
-successful container startup or health check does not guarantee that
+A successful container startup or health check does not guarantee that
 every business workflow behaves correctly. Test each feature's expected
 behavior, including invalid input and failure cases.
 
@@ -885,7 +871,6 @@ behavior, including invalid input and failure cases.
 
 Based on the supplied project description:
 
--   The project intentionally contains bugs for educational purposes.
 -   Disease classification includes a mock fallback; mock results should
     not be treated as real predictions.
 -   The irrigation engine is described as rule-based, not as a trained
@@ -930,39 +915,7 @@ existing functionality:
 
 ------------------------------------------------------------------------
 
-## Eight-Day Build Plan
 
-The project description includes the following build plan:
-
-    Day Focus
-  ----- --------------------------------------
-      1 System design and architecture
-      2 FastAPI and API Gateway
-      3 PostgreSQL and farmer APIs
-      4 Disease Detection service
-      5 RAG pipeline and vector database
-      6 Irrigation, Market Price, and Redis
-      7 Kafka and Docker Compose
-      8 Integration, testing, and deployment
-
-------------------------------------------------------------------------
-
-## Contributing
-
-For an educational repository, a useful contribution workflow is:
-
-1.  Create a branch for the change.
-2.  Describe the issue or behavior being addressed.
-3.  Add or update tests for the change.
-4.  Run the relevant service and integration checks.
-5.  Document any new configuration, endpoint, event, or limitation.
-6.  Submit the change for review.
-
-Because the project intentionally includes bugs, preserve the learning
-objective when working on debugging exercises and clearly document
-expected behavior.
-
-------------------------------------------------------------------------
 
 ## License
 
